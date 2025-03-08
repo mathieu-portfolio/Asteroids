@@ -4,35 +4,93 @@
 #include "Starship.h"
 #include <list>
 
+/**
+ * @class Player
+ * @brief Represents the player controlling a starship.
+ */
 class Player
 {
 protected:
-  Starship           *mainStarship;
-  Starship           *support;
-  Time                lastChangeMode;
+  Starship *mainStarship; ///< Main starship controlled by the player.
+  Starship *support; ///< Optional support starship.
+  Time lastChangeMode; ///< Timestamp of the last mode change.
 
 public:
-  static  Player     *player;
+  static Player *player; ///< Singleton instance of the Player.
 
+  /**
+   * @brief Constructs a Player object.
+   */
   Player(void);
 
 public:
-  static  Player &access(void);
+  /**
+   * @brief Gets the singleton instance of the Player.
+   * @return Reference to the Player instance.
+   */
+  static Player &access(void);
 
 public:
-  int       getHealth             (void)                { return mainStarship->getHealth(); }
-  int       supportCount          (void)                { return support != NULL; }
+  /**
+   * @brief Gets the player's remaining health.
+   * @return Current health value.
+   */
+  int getHealth(void) { return mainStarship->getHealth(); }
+
+  /**
+   * @brief Checks if the player has a support starship.
+   * @return 1 if support exists, otherwise 0.
+   */
+  int supportCount(void) { return support != NULL; }
 
 protected:
-  void      moveStarships         (void);
+  /**
+   * @brief Moves the player's starships.
+   */
+  void moveStarships(void);
 
 public:
-  void      addSupport            (Starship *support);
-  void      removeSupport         (void);
-  void      changeShootMode       (void);
-  void      moveMouse             (void);
-  void      leftClick             (bool pressed = true);
-  void      rightClick            (bool pressed = true);
-  void      spaceBar              (bool pressed = true);
-  void      reset                 (void);
+  /**
+   * @brief Adds a support starship.
+   * @param support Pointer to the support starship.
+   */
+  void addSupport(Starship *support);
+
+  /**
+   * @brief Removes the support starship.
+   */
+  void removeSupport(void);
+
+  /**
+   * @brief Changes the shooting mode of the player.
+   */
+  void changeShootMode(void);
+
+  /**
+   * @brief Handles player movement via mouse input.
+   */
+  void moveMouse(void);
+
+  /**
+   * @brief Handles left mouse click actions.
+   * @param pressed Whether the button is pressed.
+   */
+  void leftClick(bool pressed = true);
+
+  /**
+   * @brief Handles right mouse click actions.
+   * @param pressed Whether the button is pressed.
+   */
+  void rightClick(bool pressed = true);
+
+  /**
+   * @brief Handles space bar actions.
+   * @param pressed Whether the space bar is pressed.
+   */
+  void spaceBar(bool pressed = true);
+
+  /**
+   * @brief Resets the player's state.
+   */
+  void reset(void);
 };

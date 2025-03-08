@@ -7,18 +7,30 @@ using namespace sf;
 using namespace std;
 
 
+/**
+ * @enum TextBorder
+ * @brief Defines text alignment relative to borders.
+ */
 enum class TextBorder {
-  Left    = 0,
-  Right   = 1,
-  Top     = 2,
-  Bottom  = 3
+  Left    = 0, ///< Align to left.
+  Right   = 1, ///< Align to right.
+  Top     = 2, ///< Align to top.
+  Bottom  = 3  ///< Align to bottom.
 };
 
+/**
+ * @class GameText
+ * @brief Represents text elements used in the game.
+ */
 class GameText: public Text
 {
-protected:
-
 public:
+  /**
+   * @brief Constructs a GameText object.
+   * @param content Text content.
+   * @param size Font size.
+   * @param color Text color.
+   */
   GameText(
     const string &content,
     int           size,
@@ -73,15 +85,19 @@ public:
   void draw  (void);
 };
 
+/**
+ * @class TextList
+ * @brief Manages a list of text elements in the game.
+ */
 class TextList : public GameList<GameText>
 {
-protected:
-
-
 public:
+  /**
+   * @brief Constructs a TextList object.
+   */
   TextList(void);
 
 public:
   void update(void);
-  void draw  (void);
+  void draw(void);
 };

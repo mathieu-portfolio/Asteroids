@@ -6,6 +6,10 @@
 using namespace sf;
 using namespace std;
 
+/**
+ * @namespace Geometry
+ * @brief Provides geometric utilities for the game.
+ */
 namespace Geometry {
   const Vector2f Vector2fOne  ( 1.f,  1.f);
   const Vector2f Vector2fZero ( 0.f,  0.f);
@@ -14,20 +18,39 @@ namespace Geometry {
   const Vector2f Vector2fLeft (-1.f,  0.f);
   const Vector2f Vector2fRight( 1.f,  0.f);
 	
+  /**
+   * @enum AngleUnit
+   * @brief Defines angle units.
+   */
 	enum class AngleUnit { Radians, Degrees };
 
-
+  /**
+   * @brief Rotates a vector by a given angle.
+   * @param v The vector to rotate.
+   * @param angle The rotation angle.
+   * @param unit The angle unit (radians or degrees).
+   * @return The rotated vector.
+   */
 	Vector2f          rotate(
     const	Vector2f &v,
     float angle,
     AngleUnit unit = AngleUnit::Radians
   );
+
+  /**
+   * @brief Computes the angle between two vectors.
+   */
   float             angle(
     const Vector2f &a,
     const Vector2f &b,
     AngleUnit unit = AngleUnit::Radians
   );
+
 	float		          norm		    (const	Vector2f &v);
+
+  /**
+   * @brief Normalizes a vector.
+   */
 	Vector2f          normalize   (const	Vector2f &v);
 
 	ostream          &operator << (
@@ -35,10 +58,17 @@ namespace Geometry {
     const Vector2f &v
   );
 
+  /**
+   * @brief Computes the dot product of two vectors.
+   */
 	const float       dot(
     const Vector2f &a,
     const Vector2f &b
   );
+
+  /**
+   * @brief Computes the cross product of two vectors.
+   */
 	const float       cross(
     const Vector2f &a,
     const Vector2f &b

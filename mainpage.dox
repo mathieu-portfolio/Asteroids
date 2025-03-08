@@ -1,0 +1,16 @@
+/**
+ * @mainpage Asteroids Game Documentation
+ *
+ * @section intro Introduction
+ * Welcome to the documentation of **Asteroids**, a classic space shooter game.
+ *
+ * @section features Features
+ * - Player-controlled **Starships**
+ * - **Asteroids** that break into fragments
+ * - **Bullets** for shooting asteroids
+ * - **Power-ups** to enhance gameplay
+ * - **Game clock** for handling time
+ *
+ * @section more_info More Information
+ * For detailed documentation, check individual class descriptions.
+ */

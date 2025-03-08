@@ -6,15 +6,31 @@
 using namespace sf;
 using namespace std;
 
+/**
+ * @class GameList
+ * @brief A templated list class for managing game objects.
+ * @tparam T Type of objects stored in the list.
+ */
 template<class T>
 class GameList: public list<T *>
 {
 public:
-  GameList (void){};
-  virtual ~GameList(void){};
+  /**
+   * @brief Default constructor.
+   */
+  GameList(void) {}
 
-public:
-  bool contains  (T *elt)
+  /**
+   * @brief Destructor.
+   */
+  virtual ~GameList(void) {}
+
+  /**
+   * @brief Checks if the list contains a specific object.
+   * @param elt Pointer to the object.
+   * @return True if the object exists in the list, false otherwise.
+   */
+  bool contains(T *elt)
   {
     for (auto *otherElt : *this)
       if (otherElt == elt)
@@ -22,11 +38,15 @@ public:
   
     return false;
   }
-  void add		   (T *elt)
+
+  /**
+   * @brief Adds an object to the list if it's not already present.
+   * @param elt Pointer to the object.
+   */
+  void add(T *elt)
   {
     if (elt == NULL || contains(elt))
-		  return;
-	  list<T *>::push_back(elt);
+      return;
+    list<T *>::push_back(elt);
   }
 };
-

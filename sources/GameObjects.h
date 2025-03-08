@@ -8,13 +8,17 @@ using namespace sf;
 using namespace std;
 
 
+/**
+ * @class RenderedObject
+ * @brief Base class for objects rendered in the game.
+ */
 class RenderedObject
 {
 protected:
-    Shape          *shape;
-    Color           baseColor;
-    bool            destroyed;
-    PeriodicClock   twinkleClock;
+    Shape          *shape;       ///< Shape of the object.
+    Color           baseColor;   ///< Base color of the object.
+    bool            destroyed;   ///< Indicates if the object is destroyed.
+    PeriodicClock   twinkleClock; ///< Clock for twinkle effect.
 
 public:
     RenderedObject(
@@ -57,12 +61,16 @@ public:
     virtual void draw   (int performances);
 };
 
+/**
+ * @class MovingObject
+ * @brief Base class for moving objects in the game.
+ */
 class MovingObject: public RenderedObject
 {
 protected:
-    Vector2f direction;
-    float    speed;
-    float    rotationSpeed;
+    Vector2f direction; ///< Direction of movement.
+    float speed;        ///< Speed of movement.
+    float rotationSpeed; ///< Rotation speed.
 
 public:
     MovingObject(
@@ -112,6 +120,11 @@ public:
 };
 
 
+/**
+ * @class ObjectList
+ * @brief A templated list for managing objects.
+ * @tparam T Type of objects stored in the list.
+ */
 template<class T>
 class ObjectList: public GameList<T>
 {
@@ -122,6 +135,10 @@ public:
     virtual ~ObjectList(void){};
 
 public:
+    /**
+     * @brief Updates all objects in the list.
+     * @param performances Performance factor for update timing.
+     */
     virtual void update     (int performances)
     {
         for(auto elt = GameList<T>::begin(); elt != GameList<T>::end(); ) {
@@ -136,6 +153,10 @@ public:
         }
     }
 
+    /**
+     * @brief Draws all objects in the list.
+     * @param performances Performance factor for rendering.
+     */
     virtual void draw       (int performances)
     {
         for(auto *elt : *this)
@@ -146,14 +167,23 @@ public:
 };
 
 
+/**
+ * @class GameObjects
+ * @brief Manages all game objects.
+ */
 class GameObjects: public ObjectList<RenderedObject>
 {
-protected:
-
 public:
-    static GameObjects *gameObjects;
+    static GameObjects *gameObjects; ///< Singleton instance.
 
-    static GameObjects &objects    (void);
-    GameObjects  (void);
+    /**
+     * @brief Gets the singleton instance of GameObjects.
+     * @return Reference to the GameObjects instance.
+     */
+    static GameObjects &objects(void);
+
+    /**
+     * @brief Constructs a GameObjects object.
+     */
+    GameObjects(void);
 };
-
