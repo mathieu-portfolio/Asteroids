@@ -1,4 +1,4 @@
-# 🚀 Asteroids
+# Asteroids
 
 ![Game Preview](docs/resources/game.png)
 
