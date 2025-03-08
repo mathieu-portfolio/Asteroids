@@ -107,9 +107,3 @@ Inside the project root, run:
 doxygen Doxyfile
 ```
 This will generate the documentation inside `docs/doxygen/html/`. Open the `index.html` in your browser.
-
-On **Linux/macOS**:
-```sh
-xdg-open docs/doxygen/html/index.html
-```
-On **Windows**, double-click `index.html`.
