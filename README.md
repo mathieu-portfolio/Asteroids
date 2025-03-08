@@ -4,7 +4,7 @@
 
 ## Introduction
 This **Asteroids** game is a remaster of the classic space shooter game.
-This document explains how to **compile the game** and **generate its Doxygen documentation**.
+This document explains how to **compile the game** and **generate its Doxygen documentation**. If you're on windows and you want to skip this part, you can just launch **`Asteroids.exe`**.
 
 ---
 
